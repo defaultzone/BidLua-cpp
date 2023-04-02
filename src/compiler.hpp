@@ -1,7 +1,6 @@
 #include <fstream>
 #include <map>
 #include <filesystem>
-#include <sstream>
 #include "replace.hpp"
 #include "userMap.hpp"
 #include "names/names.hpp"
@@ -12,12 +11,10 @@
 
 void compile(const std::string inputPath, std::string outputPath, std::string userMapPath, std::string flagStatus) {
     std::ifstream inputFile(inputPath);
-    std::string inputFileExtension { std::filesystem::path(inputPath).extension().string() };
     if (inputFile.good()) {
         std::ofstream outputFile(outputPath);
         if (outputFile.good()) {
             std::string fileContent((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>());
-            std::cout << "DEBUG | _FILE_CONTENT: " << fileContent << std::endl;
 
             auto [userMapInitialize, newFileContent] = createProjectMap(userMapPath, fileContent);
             std::map<std::string, std::string> userMap;
@@ -25,23 +22,14 @@ void compile(const std::string inputPath, std::string outputPath, std::string us
                 userMap.insert(userMapInitialize.begin(), userMapInitialize.end());
             }
 
-            std::stringstream ss;
-            for (auto const& pair : userMap) {
-                ss << pair.first << ": " << pair.second << std::endl;
-            }
-            std::cout << "DEBUG | SS: " << ss.str() << std::endl;
-
             std::string outputFileContent;
             if (flagStatus == "true") {
-                outputFileContent = replaceKeys(newFileContent, userMap, inputFileExtension);
+                outputFileContent = replaceKeys(newFileContent, userMap);
             } else {
-                newFileContent = replaceKeys(newFileContent, userMap, inputFileExtension);
-                outputFileContent = replaceKeys(newFileContent, names, inputFileExtension);
+                newFileContent = replaceKeys(newFileContent, userMap);
+                outputFileContent = replaceKeys(newFileContent, names);
             }
 
-            std::cout << "DEBUG | OUTPUT FILE CONTENT: " << outputFileContent << std::endl;
-            std::cout << "DEBUG | NEW FILE CONTENT: " << newFileContent << std::endl;
-            std::cout << "DEBUG | INPUT_FILE_EXTENSION: " << inputFileExtension << std::endl;
             outputFile << outputFileContent;
             outputFile.close();
         } else {

@@ -1,13 +1,15 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include "compiler.hpp"
-//#include "replace.hpp"
-//#include "names/names.hpp"
 
 int main(int argc, char** argv) {
     compile("/home/dzone/BidLua-cpp/tests/main.blya", "/home/dzone/BidLua-cpp/tests/main.lua", "/home/dzone/BidLua-cpp/tests/main.map.blya", "false");
 
-    std::cout << "DEBUG | MAIN.CPP: " << replaceKeys("бадяга.обьединяло", names, ".blya");
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-h") == 0) {
+            std::cout << "Entered: -h" << std::endl;
+        }
+    }
 
     return 0;
 }
