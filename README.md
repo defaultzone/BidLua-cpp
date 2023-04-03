@@ -1,1 +1,1 @@
-# BidLua-cpp
+# BidLua-lang rewritten in C++
