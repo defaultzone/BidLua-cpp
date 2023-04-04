@@ -1,10 +1,8 @@
-#ifndef BIDLUA_CPP_NAMES_HPP
-#define BIDLUA_CPP_NAMES_HPP
-
-#endif //BIDLUA_CPP_NAMES_HPP
-
 #include <map>
 #include <string>
+
+#ifndef BIDLUA_CPP_NAMES_HPP
+#define BIDLUA_CPP_NAMES_HPP
 
 std::map<std::string, std::string> names {
     {"иче", "and"},
@@ -385,3 +383,5 @@ std::map<std::string, std::string> names {
     {"айдиапвалю", "upvalueid"},
     {"присоединитьапвалю", "upvaluejoin"}
 };
+
+#endif // BIDLUA_CPP_NAMES_HPP

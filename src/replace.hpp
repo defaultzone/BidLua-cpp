@@ -5,7 +5,6 @@
 
 #ifndef BIDLUA_CPP_REPLACE_H
 #define BIDLUA_CPP_REPLACE_H
-#endif  // BIDLUA_CPP_REPLACE_H
 
 std::string replaceKeys(const std::string& input, const std::map<std::string, std::string>& map) {
     std::string output;
@@ -53,3 +52,5 @@ std::string replaceKeys(const std::string& input, const std::map<std::string, st
 
     return output;
 }
+
+#endif  // BIDLUA_CPP_REPLACE_H

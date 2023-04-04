@@ -8,7 +8,6 @@
 
 #ifndef BIDLUA_CPP_USERMAP_HPP
 #define BIDLUA_CPP_USERMAP_HPP
-#endif  // BIDLUA_CPP_USERMAP_HPP
 
 std::pair<std::map<std::string, std::string>, std::string> createProjectMap(const std::string& userMapPath, std::string& mainFileContent) {
     std::map<std::string, std::string> finalMap;
@@ -41,3 +40,5 @@ std::pair<std::map<std::string, std::string>, std::string> createProjectMap(cons
     // After creating a map from the corresponding file and the main file, we return a pair from the map and the contents of the main file.
     return std::make_pair(finalMap, mainFileContent);
 }
+
+#endif  // BIDLUA_CPP_USERMAP_HPP
