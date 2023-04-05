@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
                         outputPath = argv[i + 1];
                     } else {
                         std::size_t dotPosition{inputPath.find_last_of('.')};
-                        outputPath = inputPath.substr(0, dotPosition) + ".lua";
+                        outputPath = argv[2].substr(0, dotPosition) + ".lua";
                     }
                 }
 
